@@ -3,7 +3,6 @@ package com.umiko.graphs.models;
 public abstract class AdvancedGraphRepresentation implements IGraphRepresentation {
     EdgeList edgeList;
 
-
     @Override
     public EdgeList toEdgeList() {
         return edgeList;
@@ -11,17 +10,27 @@ public abstract class AdvancedGraphRepresentation implements IGraphRepresentatio
 
     @Override
     public IncidenceMatrix toIncidenceMatrix() {
-        return null;
+        return edgeList.toIncidenceMatrix();
     }
 
     @Override
     public AdjacencyMatrix toAdjacencyMatrix() {
-        return null;
+        return edgeList.toAdjacencyMatrix();
     }
 
     @Override
     public AdjacencyList toAdjacencyList() {
-        return null;
+        return edgeList.toAdjacencyList();
+    }
+
+    @Override
+    public int getNodeCount() {
+        return edgeList.getNodeCount();
+    }
+
+    @Override
+    public void reverse() {
+        edgeList.reverse();
     }
 
     @Override

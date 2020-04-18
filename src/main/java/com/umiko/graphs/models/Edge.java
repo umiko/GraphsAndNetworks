@@ -49,15 +49,21 @@ public class Edge {
         this(from, to, 1, false, false);
     }
 
-    public boolean contains(int v){
+    public boolean contains(int v) {
         return v == from || v == to;
     }
 
-    public int getOther(int v){
-        if (contains(v)){
+    public int getOther(int v) {
+        if (contains(v)) {
             return from == v ? to : from;
         }
         throw new IllegalArgumentException(String.format("This edge (%s) does not contain %d.", toString(), v));
+    }
+
+    public void reverse() {
+        int temp = getFrom();
+        from = getTo();
+        to = temp;
     }
 
     @Override

@@ -3,17 +3,18 @@ package com.umiko.graphs.models;
 import com.umiko.graphs.helpers.EdgeListParser;
 
 import java.io.File;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.Spliterator;
+import java.util.*;
 import java.util.function.Consumer;
 
-public class EdgeList extends GraphRepresentation implements Iterable<Edge>, Collection<Edge> {
-    private Collection<Edge> edges = new ArrayList<>();
+public class EdgeList extends GraphRepresentation implements Iterable<Edge>, Collection<Edge>, List<Edge> {
+    private ArrayList<Edge> edges = new ArrayList<>();
+
+    public EdgeList() {
+
+    }
 
     public EdgeList(Collection<Edge> edges) {
-        this.edges = edges;
+        this.edges.addAll(edges);
         for (Edge e : edges) {
             if (e.isDirected())
                 this.setDirected(true);
@@ -30,6 +31,7 @@ public class EdgeList extends GraphRepresentation implements Iterable<Edge>, Col
         this(EdgeListParser.parse(filepath));
     }
 
+    @Override
     public int getNodeCount() {
         Collection<Integer> nodeIds = new ArrayList<>();
         for (Edge e : edges) {
@@ -54,6 +56,21 @@ public class EdgeList extends GraphRepresentation implements Iterable<Edge>, Col
         return incidentEdges;
     }
 
+    public HashSet<Integer> getAdjacentNodeIds(int id) {
+        Collection<Edge> incidentEdges = getIncidentEdges(id);
+        HashSet<Integer> adjacentNodeIds = new HashSet<>();
+        int other;
+        for (Edge e : incidentEdges) {
+            if ((other = e.getOther(id)) != id)
+                adjacentNodeIds.add(other);
+        }
+        return adjacentNodeIds;
+    }
+
+    public void reverse() {
+        forEach(Edge::reverse);
+    }
+
     public Edge getEdge(int edgeIndex) {
         return (Edge) edges.toArray()[edgeIndex];
     }
@@ -65,17 +82,17 @@ public class EdgeList extends GraphRepresentation implements Iterable<Edge>, Col
 
     @Override
     public IncidenceMatrix toIncidenceMatrix() {
-        return null;
+        return new IncidenceMatrix(this);
     }
 
     @Override
     public AdjacencyMatrix toAdjacencyMatrix() {
-        return null;
+        return new AdjacencyMatrix(this);
     }
 
     @Override
     public AdjacencyList toAdjacencyList() {
-        return null;
+        return new AdjacencyList(this);
     }
 
 
@@ -132,6 +149,11 @@ public class EdgeList extends GraphRepresentation implements Iterable<Edge>, Col
     }
 
     @Override
+    public boolean addAll(int index, Collection<? extends Edge> c) {
+        return edges.addAll(index, c);
+    }
+
+    @Override
     public boolean removeAll(Collection<?> c) {
         return edges.removeAll(c);
     }
@@ -144,6 +166,51 @@ public class EdgeList extends GraphRepresentation implements Iterable<Edge>, Col
     @Override
     public void clear() {
         edges.clear();
+    }
+
+    @Override
+    public Edge get(int index) {
+        return edges.get(index);
+    }
+
+    @Override
+    public Edge set(int index, Edge element) {
+        return edges.set(index, element);
+    }
+
+    @Override
+    public void add(int index, Edge element) {
+        edges.add(index, element);
+    }
+
+    @Override
+    public Edge remove(int index) {
+        return edges.remove(index);
+    }
+
+    @Override
+    public int indexOf(Object o) {
+        return edges.indexOf(o);
+    }
+
+    @Override
+    public int lastIndexOf(Object o) {
+        return edges.lastIndexOf(o);
+    }
+
+    @Override
+    public ListIterator<Edge> listIterator() {
+        return edges.listIterator();
+    }
+
+    @Override
+    public ListIterator<Edge> listIterator(int index) {
+        return edges.listIterator(index);
+    }
+
+    @Override
+    public List<Edge> subList(int fromIndex, int toIndex) {
+        return edges.subList(fromIndex, toIndex);
     }
 
     @Override

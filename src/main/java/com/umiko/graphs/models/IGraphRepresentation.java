@@ -9,6 +9,8 @@ public interface IGraphRepresentation {
 
     public AdjacencyList toAdjacencyList();
 
+    public void reverse();
+
     public boolean isStrict();
 
     public void setStrict(boolean strict);
@@ -20,4 +22,6 @@ public interface IGraphRepresentation {
     public boolean isWeighted();
 
     public void setWeighted(boolean weighted);
+
+    public int getNodeCount();
 }
