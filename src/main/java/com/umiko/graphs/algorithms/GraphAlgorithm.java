@@ -1,6 +1,7 @@
 package com.umiko.graphs.algorithms;
 
 import com.umiko.graphs.models.Color;
+import com.umiko.graphs.models.Edge;
 import com.umiko.graphs.models.IGraphRepresentation;
 import com.umiko.graphs.models.Node;
 
@@ -20,5 +21,26 @@ public abstract class GraphAlgorithm {
                 nodes.values()) {
             n.setColor(c);
         }
+    }
+
+    public Edge getEdge(int uId, int vId) {
+        Edge e;
+        if (graphRepresentation.getNodeCount() >= uId && graphRepresentation.getNodeCount() >= vId) {
+            if (nodes.get(uId).getNeighbourIds().contains(vId)) {
+                for (Edge incidentEdge : graphRepresentation.toEdgeList().getIncidentEdges(uId)) {
+                    if (incidentEdge.contains(vId)) {
+                        return incidentEdge;
+                    }
+                }
+            }
+        }
+        return null;
+    }
+
+    public void buildNodeCollection() {
+        graphRepresentation.toEdgeList().forEach(edge -> {
+            nodes.put(edge.getFrom(), new Node(edge.getFrom(), graphRepresentation));
+            nodes.put(edge.getTo(), new Node(edge.getTo(), graphRepresentation));
+        });
     }
 }

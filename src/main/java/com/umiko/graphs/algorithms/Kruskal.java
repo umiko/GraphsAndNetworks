@@ -40,6 +40,7 @@ public class Kruskal extends GraphAlgorithm {
 
     @Override
     public void displayResult() {
+        System.out.println("Kruskal");
         System.out.println(spanningTree.toString());
     }
 }

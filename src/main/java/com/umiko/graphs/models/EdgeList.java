@@ -75,6 +75,19 @@ public class EdgeList extends GraphRepresentation implements Iterable<Edge>, Col
         return (Edge) edges.toArray()[edgeIndex];
     }
 
+    public int getWeight(int from, int to) {
+        int weight = Integer.MAX_VALUE;
+        if (getAdjacentNodeIds(from).contains(to)) {
+            Collection<Edge> incidentEdges = getIncidentEdges(from);
+            for (Edge incidentEdge : incidentEdges) {
+                if (incidentEdge.getOther(from) == to) {
+                    weight = (incidentEdge.getWeight());
+                }
+            }
+        }
+        return weight;
+    }
+
     @Override
     public EdgeList toEdgeList() {
         return this;

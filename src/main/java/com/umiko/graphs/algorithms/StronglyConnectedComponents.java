@@ -28,6 +28,7 @@ public class StronglyConnectedComponents extends TopologicalSort {
 
     @Override
     public void displayResult() {
+        System.out.println("SCC");
         System.out.println(buildResultString());
     }
 

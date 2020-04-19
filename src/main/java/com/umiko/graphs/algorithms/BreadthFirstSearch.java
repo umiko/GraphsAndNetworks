@@ -55,6 +55,7 @@ public class BreadthFirstSearch extends GraphAlgorithm {
 
     @Override
     public void displayResult() {
+        System.out.println("BFS");
         System.out.println(buildResultString());
     }
 

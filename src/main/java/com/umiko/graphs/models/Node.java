@@ -3,7 +3,7 @@ package com.umiko.graphs.models;
 import java.util.Collection;
 
 public class Node extends Vertex {
-    private int parentId, distanceToRoot, timeDiscovered, timeFinished;
+    private int parentId, distanceToRoot = Integer.MAX_VALUE, timeDiscovered, timeFinished;
     private Color color = Color.WHITE;
 
     //region accessors

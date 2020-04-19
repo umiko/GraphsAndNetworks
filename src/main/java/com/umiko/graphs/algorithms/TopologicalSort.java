@@ -27,6 +27,7 @@ public class TopologicalSort extends DepthFirstSearch {
 
     @Override
     public void displayResult() {
+        System.out.println("TopSort");
         StringBuilder sb = new StringBuilder();
         for (Node n : resultList) {
             sb.append(n.toString());

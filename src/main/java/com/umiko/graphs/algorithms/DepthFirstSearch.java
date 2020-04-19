@@ -69,6 +69,7 @@ public class DepthFirstSearch extends GraphAlgorithm {
 
     @Override
     public void displayResult() {
+        System.out.println("DFS");
         for (DFSTree t : forest) {
             if (t.containsNode(rootNodeId) && t.containsNode(targetNodeId)) {
                 this.nodes = t.getTree();
