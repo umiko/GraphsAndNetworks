@@ -26,7 +26,7 @@ public abstract class GraphAlgorithm {
     public Edge getEdge(int uId, int vId) {
         Edge e;
         if (graphRepresentation.getNodeCount() >= uId && graphRepresentation.getNodeCount() >= vId) {
-            if (nodes.get(uId).getNeighbourIds().contains(vId)) {
+            if (graphRepresentation.toEdgeList().getAdjacentNodeIds(uId).contains(vId)) {
                 for (Edge incidentEdge : graphRepresentation.toEdgeList().getIncidentEdges(uId)) {
                     if (incidentEdge.contains(vId)) {
                         return incidentEdge;

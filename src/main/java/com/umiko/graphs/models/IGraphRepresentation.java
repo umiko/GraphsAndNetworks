@@ -1,6 +1,8 @@
 package com.umiko.graphs.models;
 
 public interface IGraphRepresentation {
+    public Edge getEdge(int u, int v);
+
     public EdgeList toEdgeList();
 
     public IncidenceMatrix toIncidenceMatrix();

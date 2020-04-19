@@ -37,4 +37,6 @@ public class AdjacencyMatrix extends AdvancedGraphRepresentation {
         }
         return mat;
     }
+
+
 }

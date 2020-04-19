@@ -33,6 +33,20 @@ public abstract class AdvancedGraphRepresentation implements IGraphRepresentatio
         edgeList.reverse();
     }
 
+    public Edge getEdge(int uId, int vId) {
+        Edge e;
+        if (getNodeCount() >= uId && getNodeCount() >= vId) {
+            if (edgeList.getAdjacentNodeIds(uId).contains(vId)) {
+                for (Edge incidentEdge : edgeList.getIncidentEdges(uId)) {
+                    if (incidentEdge.contains(vId)) {
+                        return incidentEdge;
+                    }
+                }
+            }
+        }
+        return null;
+    }
+
     @Override
     public boolean isStrict() {
         return edgeList.isStrict();

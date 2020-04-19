@@ -89,6 +89,21 @@ public class EdgeList extends GraphRepresentation implements Iterable<Edge>, Col
     }
 
     @Override
+    public Edge getEdge(int uId, int vId) {
+        Edge e;
+        if (getNodeCount() >= uId && getNodeCount() >= vId) {
+            if (getAdjacentNodeIds(uId).contains(vId)) {
+                for (Edge incidentEdge : getIncidentEdges(uId)) {
+                    if (incidentEdge.contains(vId)) {
+                        return incidentEdge;
+                    }
+                }
+            }
+        }
+        return null;
+    }
+
+    @Override
     public EdgeList toEdgeList() {
         return this;
     }

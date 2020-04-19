@@ -43,6 +43,11 @@ public class DFSTree extends GraphRepresentation {
     }
 
     @Override
+    public Edge getEdge(int u, int v) {
+        return toEdgeList().getEdge(u, v);
+    }
+
+    @Override
     public EdgeList toEdgeList() {
         Node currentNode;
         Queue<Integer> q = new LinkedList<>();
