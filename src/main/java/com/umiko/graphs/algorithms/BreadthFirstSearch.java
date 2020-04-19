@@ -66,14 +66,13 @@ public class BreadthFirstSearch extends GraphAlgorithm {
         Deque<Node> route = new LinkedList<>();
         Node currentNode = nodes.get(targetNodeId);
         //build path from target to root
-        while (currentNode.getParentId() != -1) {
+        while (currentNode.getParentId() != 0) {
             route.add(currentNode);
             currentNode = nodes.get(currentNode.getParentId());
         }
         //add path node by node in reverse to the string
         while (route.size() != 0) {
             sb.append(route.removeLast());
-            sb.append("\n");
         }
         return sb.toString();
     }
