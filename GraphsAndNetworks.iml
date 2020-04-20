@@ -29,11 +29,11 @@
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="file://$USER_HOME$/Downloads/jgrapht-1.4.0/jgrapht-1.4.0/lib" />
+          <root url="file://$MODULE_DIR$/lib/jgrapht-1.4.0/lib" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
-        <jarDirectory url="file://$USER_HOME$/Downloads/jgrapht-1.4.0/jgrapht-1.4.0/lib" recursive="false" />
+        <jarDirectory url="file://$MODULE_DIR$/lib/jgrapht-1.4.0/lib" recursive="false" />
       </library>
     </orderEntry>
   </component>

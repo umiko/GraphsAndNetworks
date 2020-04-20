@@ -45,7 +45,7 @@ public class Main {
         d.run();
         d.displayResult();
 
-        FloydWarshall fw = new FloydWarshall(new EdgeList("grid.txt"));
+        FloydWarshall fw = new FloydWarshall(new EdgeList("FloydWarshall.txt"));
         fw.run();
         fw.displayResult();
     }
