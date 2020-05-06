@@ -45,6 +45,10 @@ public class EdgeList extends GraphRepresentation implements Iterable<Edge>, Col
         return nodeIds.size();
     }
 
+    public int getEdgeCount() {
+        return edges.size();
+    }
+
     public Collection<Edge> getIncidentEdges(int vertId) {
         Collection<Edge> incidentEdges = new ArrayList<>();
         for (Edge e : edges) {

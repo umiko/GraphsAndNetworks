@@ -54,10 +54,11 @@ public class FloydWarshall extends GraphAlgorithm {
     public int[][] getWeightMatrix() {
         int[][] weightMatrix = graphRepresentation.toAdjacencyMatrix().getRawMatrix();
         for (int i = 0; i < graphRepresentation.getNodeCount(); i++) {
+            System.out.println(i);
             for (int j = 0; j < graphRepresentation.getNodeCount(); j++) {
                 switch (weightMatrix[i][j]) {
                     case 1:
-                        weightMatrix[i][j] = graphRepresentation.getEdge(i + 1, j + 1).getWeight();
+                        weightMatrix[i][j] = graphRepresentation.toEdgeList().getWeight(i + 1, j + 1);
                         break;
                     case 2:
                         weightMatrix[i][j] = 0;
