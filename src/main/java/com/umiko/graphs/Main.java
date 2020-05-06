@@ -48,5 +48,9 @@ public class Main {
         FloydWarshall fw = new FloydWarshall(new EdgeList("FloydWarshall.txt"));
         fw.run();
         fw.displayResult();
+
+        VertexCover vc = new VertexCover(new EdgeList("FloydWarshall.txt"));
+        vc.run();
+        vc.displayResult();
     }
 }
